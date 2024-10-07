@@ -1,10 +1,17 @@
 package com.ayushsaxena.springboot.demo.MyCoolApplication.rest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FunRestController {
+
+    @Value("${coach.name}")
+    public String coachName;
+
+    @Value("${team.name}")
+    public String teamName;
 
     @GetMapping("/")
      public String sayHello(){
@@ -18,6 +25,6 @@ public class FunRestController {
 
     @GetMapping("/fortune")
     public String getDailyFortune(){
-        return "Today is your lucky day";
+        return "Today is your lucky day Mr." + coachName;
     }
 }
